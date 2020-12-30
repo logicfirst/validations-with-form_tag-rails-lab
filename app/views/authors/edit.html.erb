@@ -1,5 +1,5 @@
-<h2>Create an Author</h2>
-<div id="error_explanations">
+<h1>Edit Author</h1>
+<div id="error_explanation">
 <% if flash[:errors] %>
 <% flash[:errors].each do |error| %>
   <li style="color: red">
@@ -9,21 +9,21 @@
 <% end %>
 </div>
 
-<%= form_tag authors_path, method: "post" do %>
+<%= form_tag author_path(@author), method: "patch" do %>
   <div class="field">
     <%= label_tag "name", "Name" %>
-    <%= text_field_tag "name" %>
+    <%= text_field_tag "name", @author.name %>
   </div>
 
   <div class="field">
     <%= label_tag "email", "Email" %>
-    <%= text_field_tag "email" %>
+    <%= text_field_tag "email", @author.email %>
   </div>
 
   <div class="field">
     <%= label_tag "phone_number", "Phone Number" %>
-    <%= text_field_tag "phone_number" %>
+    <br />
+    <%= text_field_tag "phone_number", @author.phone_number %>
   </div>
-
-  <%= submit_tag "Create" %>
+  <%= submit_tag "Update" %>
 <% end %>
